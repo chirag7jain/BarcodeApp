@@ -59,7 +59,7 @@ function makeBarCodeList($list,$cName,$PO)
         array_unshift($barList, $value);
         
 	$files = prnGenerator($barList);
-	createZip($files);
+	createZip($files,$PO);
 	#showFiles($files);
 }
 function prnGenerator($list)
@@ -152,7 +152,7 @@ function batFile($PC='SAMSUNG-2012',$PRINTER = 'ZEBRA')
     $batCommand .= "for %%a in (*.prn) do (COPY %%a /B \\\\{$PC}\\{$PRINTER})";
     return $batCommand;
 }
-function createZip($files)
+function createZip($files,$PO)
 {
 	$zip = new ZipArchive;
 	$zipName = tempnam("tmp", "zip"); 
@@ -184,10 +184,9 @@ function createZip($files)
 	
 	$zip->close();
 	
-	$dt = date('d-m::g:i');
 	header("Content-Type: application/zip");
 	header("Content-Length: " . filesize($zipName));
-	header("Content-Disposition: attachment; filename=\"{$dt}.zip\""); 	
+	header("Content-Disposition: attachment; filename=\"{$PO}.zip\""); 	
 	readfile($zipName);
 	unlink($zipName); 
 }
