@@ -14,7 +14,7 @@ $('#companyList').submit(function(event) {
 			dataType: 'json',
 			data: formElements.serialize(),
 			success: function(values,status,jqXHR) {
-				if ( values[0]!=0){createForm(values,cName); }
+				if ( values[0]!==0){createForm(values,cName); }
 				else { alert('Data Not Found'); }
 				},
 			error: function(jqXHR,status,error) { 
