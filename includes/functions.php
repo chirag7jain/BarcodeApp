@@ -10,25 +10,19 @@ function dbConnect()
 function prodList($company)
 {
 	$listQuery = 'Select * from list where clist = '.$company.' order by name' ;
-	$dataArray = null;
+	$data = null;
 	$dbconnect = dbconnect();
 	foreach($dbconnect->query($listQuery) as $row)
 	{
-		$data[0] = $row['name'];
-		$data[1] = $row['barcode'];
-		$data[2] = $row['price'];
-		$data[3] = $row['mrp'];
-		$data[4] = $row['id'];
-		$dataArray[]= $data;
+		$item[0] = $row['name'];
+		$item[1] = $row['barcode'];
+		$item[2] = $row['price'];
+		$item[3] = $row['mrp'];
+		$item[4] = $row['id'];
+		$data[]= $item;
 	}
-	if ($dataArray==null)
-	{
-		return 0;
-	}
-	else
-	{
-		return $dataArray;
-	}
+	if ($data==null){ return 0;}        
+        return $data;
 }
 function sendList($company)
 {
@@ -103,41 +97,6 @@ function prnFixedCharacters()
 	$a .= "N\r\n";
 	return $a;
 }
-/*function printLabels($labels)
-{
-	$socket = startPrinter();
-	foreach($labels as $label)
-	{
-			socket_write($socket, $label, strlen($label));
-	}
-	stopPrinter($socket);
-}*/
-/*function startPrinter()
-{
-	$port = "9100";
-	$host = "127.0.0.1";
-	$socket = socket_create(AF_INET, SOCK_STREAM, SOL_TCP);
-	if ($socket === false)
-	{
-		echo "Internal Problem : ".socket_strerror(socket_last_error());
-		return 0;
-	}
-	else
-	{
-		$result = socket_connect($socket, $host, $port);
-		if ($result === false) 
-		{ 
-			echo "Network Problem: ($result) " .socket_strerror(socket_last_error($socket));
-			return 0;
-		}
-	}
-	return $socket;
-}*/
-/*function stopPrinter($socket)
-{
-	socket_close($socket);
-	return 0;
-}*/
 function showContent($files)
 {
 	foreach($files as $file)
@@ -147,7 +106,6 @@ function showContent($files)
 }
 function batFile($PC='SAMSUNG-2012',$PRINTER = 'ZEBRA')
 {
-    //return "COPY *.prn /B \\\\{$PC}\\{$PRINTER}";
     $batCommand = "@echo off \r\n";
     $batCommand .= "for %%a in (*.prn) do (COPY %%a /B \\\\{$PC}\\{$PRINTER})";
     return $batCommand;
