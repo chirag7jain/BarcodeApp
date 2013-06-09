@@ -26,11 +26,13 @@
 		<br><br>
 		<div>
 			<form name="createBarcode" action="includes/routes.php" method="POST">
+                            <div id ="PO">
 				<table id="appendList" border='1px' border-collapse: collapse align="center">
 					<thead></thead>
 					<tbody></tbody>
 					<tfoot></tfoot>
 				</table>
+                            </div>
 			</form>
 		</div>
 		<script type="text/javascript" src='includes/js/getList.js'></script>
