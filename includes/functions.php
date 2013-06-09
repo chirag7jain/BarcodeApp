@@ -40,7 +40,7 @@ function sendList($company)
 	else
 		echo json_encode(0);
 }
-function makeBarCodeList($list,$cName)
+function makeBarCodeList($list,$cName,$PO)
 {
 	$barList = array();
 	foreach ($list as $item)
@@ -53,6 +53,11 @@ function makeBarCodeList($list,$cName)
                     $barList[] = $value;
 		}
 	}
+        $PO = 'PON'.$PO;
+        //Adding PO NO to start of array
+        $value = array($PO,$PO,$PO,$PO,$PO,1,$PO);
+        array_unshift($barList, $value);
+        
 	$files = prnGenerator($barList);
 	createZip($files);
 	#showFiles($files);
@@ -152,12 +157,28 @@ function createZip($files)
 	$zip = new ZipArchive;
 	$zipName = tempnam("tmp", "zip"); 
 	$zip->open($zipName, ZipArchive::CREATE);
+        
+        //Getting First File and Removing It From Main Array
+        $contentPO = $files[0];
+        //Removing First Element
+        unset($files[0]);
+        
+        //Creating File For First Element
+        $filename = '0.prn';
+        $zip->addFromString($filename, $contentPO);
+        
+        //Creating File For Last Element
+        $filename = 'zzzzzzz.prn';
+        $zip->addFromString($filename, $contentPO);
+        
 	foreach($files as $file)
 	{
 		$filename = substr(md5(microtime()),rand(0,26),7);
 		$filename .= '.prn';
 		$zip->addFromString($filename, $file);
 	}
+        
+        //Adding Bat File
 	$file = batFile();
 	$zip->addFromString('print.bat', $file);
 	
