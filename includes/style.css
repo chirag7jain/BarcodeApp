@@ -1,3 +1,4 @@
 #appendList table {border-collapse: collapse;margin: 10px;width: 500px;}
 #appendList td, th {border-bottom: 1px solid black;padding: 6px;width: 25%;}
 #appendList th { background-color: black;color: white;}
+#appendList tr:hover {background:#eee; }
