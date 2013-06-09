@@ -1,31 +1,3 @@
-function createForm(values,cName)
-{
-    var tableHead = '<tr>';
-    tableHead += '<th><input class="search"></th>';
-    tableHead += '<th>Barcode</th>';
-    tableHead += '<th>Price</th>';
-    tableHead += '<th>MRP</th>';
-    tableHead += '<th>Quantity</th>';
-    tableHead += '<input type="hidden" name="op" value="printList"><input type="hidden" name="cName" value="'+cName+'">';
-    tableHead += '</tr>';
-    var tableBody;
-    for (var i = 0;i<values.length;i++)
-    {
-            value = values[i];
-            tableBody += createRow(value,value[4]);
-    }
-    var tableFoot = '<tr><td colspan="100"align="center"><input type="submit" value="Print BarCodes"></td></tr>';
-    $('#appendList').find('thead').html(tableHead);
-    $('#appendList').find('tbody').html(tableBody);
-    $('#appendList').find('tfoot').html(tableFoot);
-    var inputPO = 'Enter PO Number: <input type="text" name="poNo" placeholder="Enter PO No" required><br><br>';
-    $('#PO').prepend(inputPO);
-    
-    var options = { valueNames: ['name']};
-    var poList = new List('PO', options);
-    
-    return 1;
-}
 function createRow(value,id)
 {
     var row = '<tr>';
@@ -37,4 +9,46 @@ function createRow(value,id)
     row += '<input type="hidden" name="item['+id+'][data]" value="'+value+'" required></td>';
     row += '</tr>'
     return row;
+}
+function head()
+{
+    var row = '<tr>';
+    row += '<th><input class="search"></th>';
+    row += '<th>Barcode</th>';
+    row += '<th>Price</th>';
+    row += '<th>MRP</th>';
+    row += '<th>Quantity</th>';
+    row += '<input type="hidden" name="op" value="printList"><input type="hidden" name="cName" value="'+cName+'">';
+    row += '</tr>';
+    return row;
+}
+function body()
+{
+    var row;
+    for (var i = 0;i<values.length;i++)
+    {
+            value = values[i];
+            row += createRow(value,value[4]);
+    }
+    return row;
+}
+function foot()
+{
+    var row = '<tr><td colspan="100"align="center"><input type="submit" value="Print BarCodes"></td></tr>';
+    return row;
+}
+function addSorter()
+{
+    var options = { valueNames: ['name']};
+    var poList = new List('PO', options);
+    var inputPO = 'Enter PO Number: <input type="text" name="poNo" placeholder="Enter PO No" required><br><br>';
+    $('#PO').prepend(inputPO);
+}
+function createForm(values,cName)
+{
+    $('#appendList').find('thead').html(head());
+    $('#appendList').find('tbody').html(body());
+    $('#appendList').find('tfoot').html(foot());
+    addSorter();
+    return 1;
 }
