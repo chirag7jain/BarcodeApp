@@ -19,7 +19,7 @@
 							<option value =0>Client</option>
 							<option value =1>D-Mart</option>
 						</select>
-						<input type = "submit" name = "Get List">
+						<input type = "submit" value = "Get List">
 					</td>
 				</tr>
 			</table>
