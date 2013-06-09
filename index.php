@@ -2,6 +2,7 @@
 	<head>
 		<title>Bar Code App</title>
 		<script type = "text/javascript" src="includes/js/jquery-1.10.1.min.js"></script>
+                <script type = "text/javascript" src="includes/js/list.min.js"></script>
 		<script type = "text/javascript" src="includes/js/makeForm.js"></script>
 		<link rel='stylesheet' href='includes/style.css'></link>
 	</head>
@@ -29,7 +30,7 @@
                             <div id ="PO">
 				<table id="appendList" border='1px' border-collapse: collapse align="center">
 					<thead></thead>
-					<tbody></tbody>
+					<tbody class="list"></tbody>
 					<tfoot></tfoot>
 				</table>
                             </div>

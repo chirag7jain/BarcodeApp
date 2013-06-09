@@ -1,7 +1,7 @@
 function createForm(values,cName)
 {
     var tableHead = '<tr>';
-    tableHead += '<th>Name</th>';
+    tableHead += '<th><input class="search"></th>';
     tableHead += '<th>Barcode</th>';
     tableHead += '<th>Price</th>';
     tableHead += '<th>MRP</th>';
@@ -20,12 +20,16 @@ function createForm(values,cName)
     $('#appendList').find('tfoot').html(tableFoot);
     var inputPO = 'Enter PO Number: <input type="text" name="poNo" placeholder="Enter PO No" required><br><br>';
     $('#PO').prepend(inputPO);
+    
+    var options = { valueNames: ['name']};
+    var poList = new List('PO', options);
+    
     return 1;
 }
 function createRow(value,id)
 {
     var row = '<tr>';
-    row += '<td>'+value[0]+'</td>';
+    row += '<td class="name">'+value[0]+'</td>';
     row += '<td>'+value[1]+'</td>';
     row += '<td>'+value[2]+'</td>';
     row += '<td>'+value[3]+'</td>';
