@@ -12,7 +12,7 @@ if(isset($_REQUEST['op']))
 			}
 		break;
 		case 'printList':
-			makeBarCodeList($_POST['item'],$_POST['cName']);
+			makeBarCodeList($_POST['item'],$_POST['cName'],$_POST['PO']);
 		break;
 	}
 }
