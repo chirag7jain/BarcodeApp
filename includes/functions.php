@@ -9,7 +9,7 @@ function dbConnect()
 }
 function prodList($company)
 {
-	$listQuery = 'Select * from list where clist = '.$company ;
+	$listQuery = 'Select * from list where clist = '.$company.' order by name' ;
 	$dataArray = null;
 	$dbconnect = dbconnect();
 	foreach($dbconnect->query($listQuery) as $row)
@@ -142,7 +142,10 @@ function showContent($files)
 }
 function batFile($PC='SAMSUNG-2012',$PRINTER = 'ZEBRA')
 {
-	return "COPY *.prn /B \\{$PC}\\{$PRINTER}";
+    //return "COPY *.prn /B \\\\{$PC}\\{$PRINTER}";
+    $batCommand = "@echo off \r\n";
+    $batCommand .= "for %%a in (*.prn) do (COPY %%a /B \\\\{$PC}\\{$PRINTER})";
+    return $batCommand;
 }
 function createZip($files)
 {
