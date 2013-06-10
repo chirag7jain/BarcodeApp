@@ -1,9 +1,9 @@
 barcodeApp
 ==========
-Important - The database structure isn't clear explained in the program and it will be improved in future commit.
-But even an average programmer can easily understand it. The current state of the program is build to be used in windows 
-environment but can be easily modified to be used in linux. There are two things that are windows specific that is the
-template '/r/n part' and the batch file.
+Important - The database structure isn't clearly explained in the program and it will be improved in future commits.
+But even an average programmer can easily understand it by going through the program. The current state of the program
+is that it is build to be used in windows environment but can be easily modified to be used in linux. There are two 
+things that are windows specific that is the template '/r/n part' and the batch file.
 
 Its a simple app to show how anyone can build a program to dynamically generate prn files for barcode label printing
 using a common template.
