@@ -1,5 +1,8 @@
 <?php
-require('functions.php');
+require 'dbLay.php';
+require 'prnLay.php';
+require 'etcLay.php';
+require 'processLay.php';
 if(isset($_REQUEST['op']))
 {
 	$op = $_REQUEST['op'];
