@@ -1,17 +1,16 @@
-$('#companyList').submit(function(event) {
-    event.preventDefault();
-    var formElements = $(this),
-    cList = formElements.find('select[id="cList"]').val(),
-    cName = $("#cList option[value='"+cList+"']").text(),
-    url = formElements.attr('action'),
-    method = formElements.attr('method');
+$('#companyList').submit(function(e) {
+    e.preventDefault();
+    cList = $('#cList').val(),
+    cName = $('#cList option[value='+cList+']').text(),
+    url = $(this).attr('action'),
+    method = $(this).attr('method');
     if(cList!==0)
     {
         $.ajax({
                 url: url,
                 type: method,
                 dataType: 'json',
-                data: formElements.serialize(),
+                data: $(this).serialize(),
                 success: function(values,status,jqXHR) {
                         if ( values[0]!=0){createForm(values,cName); }
                         else { alert('Data Not Found'); }
