@@ -1,3 +1,4 @@
+<?php include 'includes/dbLay.php';?>
 <html>
 	<head>
 		<title>Bar Code App</title>
@@ -15,9 +16,14 @@
 					<td>Get BarCode List For</td>
 					<td>
 						<input type='hidden' value="getList" name='op'>
-						<select name='cList'>
+						<select id="cList" name="cList">
 							<option value =0>Client</option>
-							<option value =1>D-Mart</option>
+                                                        <?php $cList = compList();
+                                                        foreach ($cList as $item)
+                                                        {
+                                                            echo "<option value ={$item['id']}>{$item['name']}</option>";
+                                                        }
+                                                        ?>
 						</select>
 						<input type = "submit" value = "Get List">
 					</td>
@@ -25,17 +31,34 @@
 			</table>
 		</form>
 		<br><br>
-		<div>
-			<form name="createBarcode" action="includes/routes.php" method="POST">
-                            <div id ="PO">
-				<table id="appendList" border='1px' border-collapse: collapse align="center">
-					<thead></thead>
-					<tbody class="list"></tbody>
-					<tfoot></tfoot>
-				</table>
-                            </div>
-			</form>
-		</div>
+                <form name="createBarcode" action="includes/routes.php" method="POST">
+                    <input type="hidden" name="op" value="printList"><input type="hidden" name="cName" id="cName">
+                    <div id ="PO" style="display:None">
+                        Enter PO Number : <input type="text" name="poNo" placeholder="Enter PO No" required maxlength="5"><br><br>
+                        <table id="appendList" border='1px' border-collapse: collapse align="center">
+                                <thead style="display: none">
+                                    <tr>
+                                        <td colspan="100%" align="center">Filter Values : <input class="search" placeholder="Filter By Name" size="50px"></td>
+                                    </tr>
+                                    <tr>
+                                        <th>Name</th>
+                                        <th>Barcode</th>
+                                        <th>Price</th>
+                                        <th>MRP</th>
+                                        <th>Quantity - Labels Needed</th>
+                                    </tr>
+                                </thead>
+                                <tbody class="list"></tbody>
+                                <tfoot style="display: none">
+                                    <tr>
+                                        <td colspan="100%" align="center">
+                                            <input type="submit" value="Print BarCodes">
+                                        </td>
+                                    </tr>
+                                </tfoot>
+                        </table>
+                    </div>
+                </form>
 		<script type="text/javascript" src='includes/js/getList.js'></script>
 	</body>
 </html>
