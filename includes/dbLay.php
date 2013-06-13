@@ -31,7 +31,9 @@ function compList()
     $data = null;
     foreach($dbconnect->query($listQuery) as $row)
     {
-        $data[] = $row['name'];
+        $item['id'] = $row['id'];
+        $item['name'] = $row['name'];
+        $data[] = $item;
     }
     if ($data==null){ return 0;}        
     return $data;
