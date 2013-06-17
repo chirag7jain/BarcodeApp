@@ -4,7 +4,7 @@ $('#companyList').submit(function(e) {
     cName = $('#cList option[value='+cList+']').text(),
     url = $(this).attr('action'),
     method = $(this).attr('method');
-    if(cList!==0)
+    if(cList!=="0")
     {
         $.ajax({
                 url: url,
