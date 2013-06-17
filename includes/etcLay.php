@@ -2,7 +2,7 @@
 function createBat($PC='SAMSUNG-2012',$PRINTER = 'ZEBRA')
 {
     $batCommand = "@echo off \r\n";
-    $batCommand .= "for %%a in (*.prn) do (COPY %%a /B \\\\{$PC}\\{$PRINTER})";
+    $batCommand .= "COPY *.prn \\\\{$PC}\\{$PRINTER}";
     return $batCommand;
 }
 function createZip($files,$PO)
@@ -26,9 +26,9 @@ function createZip($files,$PO)
 
     foreach($files as $file)
     {
-            $filename = substr(md5(microtime()),rand(0,26),7);
-            $filename .= '.prn';
-            $zip->addFromString($filename, $file);
+        $filename = substr(md5(microtime()),rand(0,26),7);
+        $filename .= '.prn';
+        $zip->addFromString($filename, $file);
     }
 
     //Adding Bat File
