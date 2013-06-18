@@ -1,10 +1,14 @@
 <?php
 function prnGenerator($list)
 {
-    $prnFiles = array();
+    $prnFiles = '';
     $precode = prnFixedCharacters();
     foreach ($list as $item)
     {
+		if($prnFiles!='')
+		{
+			$prnFiles .= "\r\n";
+		}
             $a = $precode;
             $product  = $item[0];
             $barcode = $item[1];
@@ -20,7 +24,7 @@ function prnGenerator($list)
             $a .= "A203,92,0,4,1,1,N,\" MRP\"\r\n";
             $a .= "A203,114,0,4,1,1,N,\"Rs{$mrp}\"\r\n";
             $a .= "P{$quantity}\r\n";
-            $prnFiles[] = $a;
+            $prnFiles .= $a;
     }
     return $prnFiles;
 }

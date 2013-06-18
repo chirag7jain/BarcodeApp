@@ -26,9 +26,10 @@ function makeBarCodeList($list,$cName,$PO)
     //Adding PO NO to start of array
     $value = array($PO,$PO,$PO,$PO,$PO,1,$PO);
     array_unshift($barList, $value);
+    $barList[] = $value;
 
     $files = prnGenerator($barList);
-    createZip($files,$PO);
+    sendFiles($files,$PO);
     #showFiles($files);
 }
 ?>
