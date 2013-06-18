@@ -3,6 +3,8 @@ function createBat($PC='SAMSUNG-2012',$PRINTER = 'ZEBRA')
 {
     $batCommand = "@echo off \r\n";
     $batCommand .= "COPY *.prn \\\\{$PC}\\{$PRINTER}";
+    $batCommand .= "del *.prn";
+
     return $batCommand;
 }
 function sendFiles($files,$PO)
@@ -15,7 +17,6 @@ function sendFiles($files,$PO)
     
     ob_clean();
 	flush(); 
-    
     echo $files;
     exit();
 }
