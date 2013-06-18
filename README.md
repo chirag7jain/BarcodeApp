@@ -1,22 +1,16 @@
 BarcodeApp
 ==========
-The current state of the program is that it is build to be used in windows environment but can be easily modified to be used in linux. There are two things that are windows specific that is the template '/r/n part' and the batch file.
+Its a simple app to show how anyone can build a program to dynamically generate prn file for barcode label printing using a common template.
 
-Its a simple app to show how anyone can build a program to dynamically generate prn files for barcode label printing using a common template.
-
-In this app I have a used a template which I use for my own business. The template is for a zebra printer. But this can be easily modified to use any label making printer template and printer.
+In this app I have a used a template which I use for my own business. The template is for a zebra printer. But this can be easily modified to use any label printer template and printer.
 
 What is does is
 1. It basically pulls product list for particular client The list has client barcode,price,mrp and product name for all the products relating to that client
 2. User needs to add quantities he want for each barcode label against the product and then select printbarcode.
-3. The user gets a zip file to download containing all his barcode label prns file and a batch file.
-4. The user needs to extract the zip file to an empty folder and execute the batch file.
+3. The user gets a prn file to download
+4. The user needs to copy the prn file to the printer
 
-The program currently has certain hardcoded value -
-    $PC, $Printer - Functions.php
-    The Printer Template - Functions
-
-These things are still underdevelopment but this was mainly intended to show that how easy its to build an app that can make barcode label printing easy and quick. No need to buy unwanted wasteful and expensive software to do the same.
+The program has the Printer Template hardcoded - Functions.php
 
 The advantage of this app
 1. Have all the details regarding product in a database and no need to create label files that are both heavy on memory	and require a seperate application software to run them.
