@@ -1,6 +1,6 @@
 <?php include 'includes/dbLay.php';
 $cList = compList();
-$a = null;
+$a = '';
 foreach ($cList as $item){$a .= "<option value ={$item['id']}>{$item['name']}</option>";}
 ?>
  <!DOCTYPE html>
