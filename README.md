@@ -11,7 +11,3 @@ What is does is
 4. The user needs to copy the prn file to the printer
 
 The program has the Printer Template hardcoded - Functions.php
-
-The advantage of this app
-1. Have all the details regarding product in a database and no need to create label files that are both heavy on memory	and require a seperate application software to run them.
-2. A issue I faced was that I had to manually open each file for printing and give print order for each. It required me to open each file in application and selecting the print option for each file one at a time. Here I can do the same job in just 2 or 3 steps for the entire list together.
