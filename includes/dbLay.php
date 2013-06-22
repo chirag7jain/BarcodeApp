@@ -14,12 +14,12 @@ function prodList($company)
     $dbconnect = dbconnect();
     foreach($dbconnect->query($listQuery) as $row)
     {
-            $item[0] = $row['name'];
-            $item[1] = $row['barcode'];
-            $item[2] = $row['price'];
-            $item[3] = $row['mrp'];
-            $item[4] = $row['id'];
-            $data[]= $item;
+        $item[0] = $row['name'];
+        $item[1] = $row['barcode'];
+        $item[2] = $row['price'];
+        $item[3] = $row['mrp'];
+        $item[4] = $row['id'];
+        $data[]= $item;
     }
     if ($data==null){ return 0;}        
     return $data;
