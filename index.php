@@ -29,10 +29,10 @@ foreach ($cList as $item){$a .= "<option value ={$item['id']}>{$item['name']}</o
             </table>
         </form>
         <br><br>
-        <form name="createBarcode" action="includes/routes.php" method="POST">
+        <form id="createBarcode" name="createBarcode" action="includes/routes.php" method="POST">
             <input type="hidden" name="op" value="printList"><input type="hidden" name="cName" id="cName">
             <div id ="PO" style="display:None">
-                Enter PO Number : <input type="text" name="poNo" placeholder="Enter PO No" required maxlength="5"><br><br>
+                Enter PO Number : <input type="text" id="poNo" name="poNo" placeholder="Enter PO No" required maxlength="5"><br><br>
                 <table id="appendList" border='1px' border-collapse: collapse align="center">
                     <thead style="display: none">
                         <tr>
@@ -50,7 +50,7 @@ foreach ($cList as $item){$a .= "<option value ={$item['id']}>{$item['name']}</o
                     <tfoot style="display: none">
                         <tr>
                             <td colspan="100%" align="center">
-                                <input type="submit" value="Print BarCodes">
+                                <button type="button" onclick="doPrint();">Print Barcodes</button>
                             </td>
                         </tr>
                     </tfoot>
@@ -61,5 +61,6 @@ foreach ($cList as $item){$a .= "<option value ={$item['id']}>{$item['name']}</o
         <script type="text/javascript" src="includes/js/list.min.js"></script>
         <script type="text/javascript" src="includes/js/makeForm.js"></script>
         <script type="text/javascript" src='includes/js/getList.js'></script>
+        <script type="text/javascript" src="includes/js/stopStupid.js"></script>
     </body>
 </html>
