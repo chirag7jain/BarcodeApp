@@ -22,7 +22,8 @@ foreach ($cList as $item){$a .= "<option value ={$item['id']}>{$item['name']}</o
                             <option value=0>Client</option>
                             <?php echo $a;?>
                         </select>
-                        <input type = "submit" value = "Get List">
+                        <input type="submit" value="Get List">
+                        <input type="button" value="Get Windows Script" onclick="location.href='includes/routes.php?op=getbatchfile';">
                     </td>
                 </tr>
             </table>
