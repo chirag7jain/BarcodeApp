@@ -3,6 +3,10 @@ require 'dbLay.php';
 require 'prnLay.php';
 require 'etcLay.php';
 require 'processLay.php';
+
+define('SUPPLIER',  100246);
+define('DATE',     '02-05');
+
 if(isset($_REQUEST['op']))
 {
     $op = $_REQUEST['op'];
